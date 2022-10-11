@@ -21,6 +21,13 @@ app.get('/api/get/billNumber',(req,res) =>{
     })
 })
 
+app.get('/api/get/items',(req,res) =>{
+    const getItems = "SELECT distinct(item_name) FROM customer_bill;"
+    db.query(getItems,(err,result) =>{
+        res.send(result)
+    })
+})
+
 app.post("/api/insert",(req,res) =>{
 
     const itemList = req.body.itemList
